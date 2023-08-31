@@ -27,11 +27,12 @@ async function writeFile (pathFile) {
     try{
         const encoding = "utf-8";
         const texto = await fs.promises.readFile(pathFile, encoding)
-        console.log(extractLinks(texto));
+        console.log(chalk.yellow("--- ARQUIVO PEGO COM SUCESSO ---"));
+        return extractLinks(texto);
     }catch (erro){
         trataErro(erro);
     }finally{
-        console.log(chalk.yellow("TODOS OS ARQUIVOS FORAM LIDOS"));
+        console.log(chalk.yellow("--- FIM DA LEITURA ---"));
     }
 }
 
@@ -73,4 +74,4 @@ async function takeFile (pathFile){
      .catch(trataErro);
 }**/
 
-writeFile('./arquivos/texto.md');
+export default writeFile;
